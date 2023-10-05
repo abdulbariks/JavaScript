@@ -1,89 +1,86 @@
-// Loop
-// for - loops through a block of code a number of times
-for (let i = 0; i < 5; i++) {
-    console.log(i);
-  }
-
-const cars = ["BMW", "Volvo", "Saab", "Ford"];
-const name = "bangladesh";
-let i = 0;
-let namelen =name.length;
-let len = cars.length;
-for (i; i < len; i++) {
-  console.log(cars[i])
-
-}
-for (j =0; j<namelen; j++) {
-    console.log(name[j]);
-    
+// JavaScript functions 
+function functionName(parameters) {
+  // code to be executed
 }
 
-// while - loops through a block of code while a specified condition is true
-while (i < 10) {
-    console.log(i)
-    i++;
-  }
-  let cities =  ['Dhaka ', 'rangpur', 'raajshahi', 'barisha']
-  let y = 0;
-  while (y <cities.length) {
-    console.log(`index: ${y} and item is : ${cities[y]}`)
-    y++;
-  }
-// do/while - also loops through a block of code while a specified condition is true
-let city = "dhaka";
-let citylen = city.length;
-let x = 0;
-do {
-    console.log(city[x])
-    x++;
-  }
-  while (x < citylen);
-// for/in - loops through the properties of an object
-const person = {fname:"Abdul", lname:"Barik", age:26};
-for (let x in person) {
-  console.log(x + person[x])
+function firstFunction(a,b) {
+  return a+b;
 }
 
-// for/of - loops through the values of an iterable object
-//array
-for (let x of cars) {
-  console.log(x)
+let x = firstFunction(3,4);
+console.log(x);
+
+// Arrow Functions
+let ArrowFunction =(a,b)=>{
+  return a*b;
 }
+console.log(ArrowFunction(3,4))
 
-//string
-let language = "JavaScript";
-for (let x of language) {
-console.log(x)
+
+// Default Parameter Values
+function myFunction(x = 5, y = 10) {
+  return x + y;
 }
+console.log(myFunction());
 
 
-// JavaScript Break and Continue
-for (let i = 0; i < 10; i++) {
-    if (i === 3) {
-         break; 
-        }
-    console.log(i)
-  }
-
-  for (let i = 0; i < 10; i++) {
-    if (i === 5) {
-         continue; 
-        }
-    console.log(i)
-  }
-
-
-  let n = parseFloat(prompt("Enter Your Number:"));
-  let sum = 0;
-  let series = '';
-  for (let i = 1; i <=n; i++) {
-    sum =sum+i**2;
-    series = series + (i**2).toString()
-    if (i==n) {
-        continue
+// The Arguments Object
+ x = findMax(1, 123, 500, 115, 44, 88);
+function findMax() {
+  let max = -Infinity;
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > max) {
+      max = arguments[i];
     }
-    // series = series + '+';
-    series += '+';
-
   }
-  console.log(`${series} = ${sum}`);
+  return max;
+}
+console.log(x);
+
+
+// Invoking a Function as a Method
+const myObject = {
+  firstName:"abdul",
+  lastName: "Barik",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+let y = myObject.fullName(); 
+console.log(y);
+
+
+
+// JavaScript call() apply() Method
+const person = {
+  firstName:"Rahat",
+  lastName:"Rafat",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const person1 = {
+  firstName:"Abdul",
+  lastName: "Barik"
+}
+const person2 = {
+  firstName:"Rasel",
+  lastName: "islam",
+}
+console.log(person.fullName.call(person2));
+console.log(person.fullName.apply(person1));
+console.log(person.fullName());
+
+// JavaScript Function bind()
+const persons = {
+  firstNam:"Rahat",
+  lastNam: "Rafat",
+  fullNam: function () {
+    return this.firstNam + " " + this.lastNam;
+  }
+}
+const member = {
+  firstNam:"Abdul",
+  lastNam: "Barik",
+}
+console.log(persons.fullNam.bind(member));
