@@ -1,75 +1,66 @@
-// JavaScript Classes
- class User {
-      constructor(fname, lname){
-        this.fname = fname;
-        this.lname = lname;
-      }
-      fullname(){
-        console.log(`FullName :${this.fname} ${this.lname}`);
-      }
- }
- 
- let user1 = new User('abdul', 'barik');
- let user2 = new User('rasel', 'islam');
- console.log(user1);
- console.log(user2.fullname());
-
- class User1 {
-  constructor(fname, lname, dob){
-    this.fname = fname;
-    this.lname = lname;
-    this.dob = dob; 
-  }
-  calculateAge () {
-    let birthdate = new Date(this.dob);
-    let diff = Date.now()- birthdate.getTime();
-    let ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear()-1970);
-  }    
+// JavaScript Errors Handling
+// JavaScript try and catch
+// try {
+//   Block of code to try
+// }
+// catch(err) {
+//   Block of code to handle errors
+// }
+try {
+  adddlert('Hello')
+} catch (error) {
+  console.log(error.message);
 }
 
-let user3 = new User1('abdul', 'barik','03-04-1997');
-let user4 = new User1('rasel', 'islam', '04-05-1998');
-console.log(user3, user3.calculateAge());
-console.log(user4);
+// JavaScript Throws Errors & The finally Statement
+// try {
+//   Block of code to try
+// }
+// catch(err) {
+//   Block of code to handle errors
+// }
+// finally {
+//   Block of code to be executed regardless of the try / catch result
+// }
 
-
-// JavaScript Class Inheritance
-class Person {
- constructor(fname, lname, dob){
-  this.fname = fname;
-  this.lname = lname;
- }
-
+let x = "5"
+try {
+  if(x.trim() == "") throw "is empty";
+  if(isNaN(x)) throw "is not a number";
+  x = Number(x);
+  if(x > 10) throw "is too high";
+  if(x < 5) throw "is too low";
+}
+catch(err) {
+  console.log(err);
+}
+finally {
+  console.log(x);
 }
 
-class newPerson extends Person{
-  constructor(fname, lname, dob){
-    super(fname, lname)
-    this.dob = dob; 
-  }
-}
-
-let person1 = new newPerson('Abdul', 'Barik', '03-04-1997');
-console.log(person1); 
-
-// JavaScript Static Methods
-class Person3 {
-  constructor(fname, lname){
-   this.fname = fname;
-   this.lname = lname;
-  }
-  fullname1(){
-    console.log(`FullName :${this.fname} ${this.lname}`);
-  }
-
-  static  fullname2(){
-    console.log(`I am Static Function`);
-  }
+// Range Error
+var num = 1;
+try {
+  num.toPrecision(500); //Range Error
 
 }
+catch(err) {
+  console.log(err.name);
+}
+// Type Error
+var num = 1;
+try {
+  num.toUpperCase();//Type Error
 
-let person3 = new Person3('Rahat', 'Rafat');
-console.log(person3.fullname1());
-// Static function can be called object
-console.log(Person3.fullname2());
+}
+catch(err) {
+  console.log(err.name);
+}
+
+// Syntax Error
+try {
+  eval("alert('Hello)");   // Syntax Error
+}
+catch(err) {
+  console.log(err.name);
+}
