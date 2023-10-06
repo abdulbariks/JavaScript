@@ -1,86 +1,75 @@
-// JavaScript functions 
-function functionName(parameters) {
-  // code to be executed
-}
+// JavaScript Classes
+ class User {
+      constructor(fname, lname){
+        this.fname = fname;
+        this.lname = lname;
+      }
+      fullname(){
+        console.log(`FullName :${this.fname} ${this.lname}`);
+      }
+ }
+ 
+ let user1 = new User('abdul', 'barik');
+ let user2 = new User('rasel', 'islam');
+ console.log(user1);
+ console.log(user2.fullname());
 
-function firstFunction(a,b) {
-  return a+b;
-}
-
-let x = firstFunction(3,4);
-console.log(x);
-
-// Arrow Functions
-let ArrowFunction =(a,b)=>{
-  return a*b;
-}
-console.log(ArrowFunction(3,4))
-
-
-// Default Parameter Values
-function myFunction(x = 5, y = 10) {
-  return x + y;
-}
-console.log(myFunction());
-
-
-// The Arguments Object
- x = findMax(1, 123, 500, 115, 44, 88);
-function findMax() {
-  let max = -Infinity;
-  for (let i = 0; i < arguments.length; i++) {
-    if (arguments[i] > max) {
-      max = arguments[i];
-    }
+ class User1 {
+  constructor(fname, lname, dob){
+    this.fname = fname;
+    this.lname = lname;
+    this.dob = dob; 
   }
-  return max;
+  calculateAge () {
+    let birthdate = new Date(this.dob);
+    let diff = Date.now()- birthdate.getTime();
+    let ageDate = new Date(diff);
+    return Math.abs(ageDate.getUTCFullYear()-1970);
+  }    
 }
-console.log(x);
+
+let user3 = new User1('abdul', 'barik','03-04-1997');
+let user4 = new User1('rasel', 'islam', '04-05-1998');
+console.log(user3, user3.calculateAge());
+console.log(user4);
 
 
-// Invoking a Function as a Method
-const myObject = {
-  firstName:"abdul",
-  lastName: "Barik",
-  fullName: function () {
-    return this.firstName + " " + this.lastName;
-  }
+// JavaScript Class Inheritance
+class Person {
+ constructor(fname, lname, dob){
+  this.fname = fname;
+  this.lname = lname;
+ }
+
 }
-let y = myObject.fullName(); 
-console.log(y);
 
-
-
-// JavaScript call() apply() Method
-const person = {
-  firstName:"Rahat",
-  lastName:"Rafat",
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
+class newPerson extends Person{
+  constructor(fname, lname, dob){
+    super(fname, lname)
+    this.dob = dob; 
   }
 }
-const person1 = {
-  firstName:"Abdul",
-  lastName: "Barik"
-}
-const person2 = {
-  firstName:"Rasel",
-  lastName: "islam",
-}
-console.log(person.fullName.call(person2));
-console.log(person.fullName.apply(person1));
-console.log(person.fullName());
 
-// JavaScript Function bind()
-const persons = {
-  firstNam:"Rahat",
-  lastNam: "Rafat",
-  fullNam: function () {
-    return this.firstNam + " " + this.lastNam;
+let person1 = new newPerson('Abdul', 'Barik', '03-04-1997');
+console.log(person1); 
+
+// JavaScript Static Methods
+class Person3 {
+  constructor(fname, lname){
+   this.fname = fname;
+   this.lname = lname;
   }
+  fullname1(){
+    console.log(`FullName :${this.fname} ${this.lname}`);
+  }
+
+  static  fullname2(){
+    console.log(`I am Static Function`);
+  }
+
 }
-const member = {
-  firstNam:"Abdul",
-  lastNam: "Barik",
-}
-console.log(persons.fullNam.bind(member));
+
+let person3 = new Person3('Rahat', 'Rafat');
+console.log(person3.fullname1());
+// Static function can be called object
+console.log(Person3.fullname2());
