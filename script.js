@@ -1,66 +1,34 @@
-// JavaScript Errors Handling
-// JavaScript try and catch
-// try {
-//   Block of code to try
-// }
-// catch(err) {
-//   Block of code to handle errors
-// }
-try {
-  adddlert('Hello')
-} catch (error) {
-  console.log(error.message);
+// JavaScript HTML DOM
+
+document.getElementById("demo").innerHTML = "The getElementById Method";
+
+tagelement = document.getElementsByTagName("p");
+classelement = document.getElementsByClassName('pra');
+
+document.getElementById('pra').innerHTML = "second paragraph tag" + tagelement[0].innerHTML;
+document.getElementById('classelement').innerHTML = "The first paragraph Class element" + classelement[0].innerHTML;
+
+
+document.getElementById("demo1").innerHTML = "Date : " + Date();
+
+
+// Changing HTML Style
+document.getElementById("pra").style.color = 'blue';
+
+
+
+function myFunction() {
+  let x = document.getElementById("num").value;
+  let text;
+  if (isNaN(x)) {
+    text = "Input not valid";
+  } else {
+    if (x%2==0) {
+      text = "Even Number"
+    } else {
+      text = "Odd Number"
+    }
+  }
+  document.getElementById("result").innerHTML = text;
 }
 
-// JavaScript Throws Errors & The finally Statement
-// try {
-//   Block of code to try
-// }
-// catch(err) {
-//   Block of code to handle errors
-// }
-// finally {
-//   Block of code to be executed regardless of the try / catch result
-// }
-
-let x = "5"
-try {
-  if(x.trim() == "") throw "is empty";
-  if(isNaN(x)) throw "is not a number";
-  x = Number(x);
-  if(x > 10) throw "is too high";
-  if(x < 5) throw "is too low";
-}
-catch(err) {
-  console.log(err);
-}
-finally {
-  console.log(x);
-}
-
-// Range Error
-var num = 1;
-try {
-  num.toPrecision(500); //Range Error
-
-}
-catch(err) {
-  console.log(err.name);
-}
-// Type Error
-var num = 1;
-try {
-  num.toUpperCase();//Type Error
-
-}
-catch(err) {
-  console.log(err.name);
-}
-
-// Syntax Error
-try {
-  eval("alert('Hello)");   // Syntax Error
-}
-catch(err) {
-  console.log(err.name);
-}
