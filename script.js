@@ -1,34 +1,50 @@
 // JavaScript HTML DOM
+// JavaScript HTML DOM Animation
 
-document.getElementById("demo").innerHTML = "The getElementById Method";
-
-tagelement = document.getElementsByTagName("p");
-classelement = document.getElementsByClassName('pra');
-
-document.getElementById('pra').innerHTML = "second paragraph tag" + tagelement[0].innerHTML;
-document.getElementById('classelement').innerHTML = "The first paragraph Class element" + classelement[0].innerHTML;
-
-
-document.getElementById("demo1").innerHTML = "Date : " + Date();
-
-
-// Changing HTML Style
-document.getElementById("pra").style.color = 'blue';
-
-
-
-function myFunction() {
-  let x = document.getElementById("num").value;
-  let text;
-  if (isNaN(x)) {
-    text = "Input not valid";
-  } else {
-    if (x%2==0) {
-      text = "Even Number"
+document.getElementById('animation').addEventListener("click", myMove);
+function myMove() {
+  let id = null;
+  const elem = document.getElementById("animate");   
+  let pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
     } else {
-      text = "Odd Number"
+      pos++; 
+      elem.style.center = pos + "px"; 
+      elem.style.right = pos + "px"; 
     }
   }
-  document.getElementById("result").innerHTML = text;
 }
 
+// nodeName Property
+let val = document.getElementById("animation").nodeName;
+let val1 = document.getElementById("animation").nodeType;
+console.log(val1);
+
+
+// Creating New HTML Elements (Nodes)
+const para1 = document.createElement("p");
+const para2 = document.createElement("p");
+const node1 = document.createTextNode("This is new.");
+const node2 = document.createTextNode("Second Paragraph text");
+
+para1.appendChild(node1);
+para2.appendChild(node2);
+
+
+const element = document.getElementById("div1");
+element.appendChild(para1);
+element.appendChild(para2);
+
+// Replacing HTML Elements 
+const para3 = document.getElementById("p1")
+const node3 = document.createTextNode("This is new replace.");
+para3.replaceWith(para3, node3);
+
+
+// HTML DOM Node List
+const myNodelist = document.querySelectorAll("p");
+console.log(myNodelist);
