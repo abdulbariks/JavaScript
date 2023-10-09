@@ -1,50 +1,48 @@
-// JavaScript HTML DOM
-// JavaScript HTML DOM Animation
+// JavaScript Regular Expressions
 
-document.getElementById('animation').addEventListener("click", myMove);
-function myMove() {
-  let id = null;
-  const elem = document.getElementById("animate");   
-  let pos = 0;
-  clearInterval(id);
-  id = setInterval(frame, 5);
-  function frame() {
-    if (pos == 350) {
-      clearInterval(id);
-    } else {
-      pos++; 
-      elem.style.center = pos + "px"; 
-      elem.style.right = pos + "px"; 
-    }
+
+
+let re;
+let str; 
+
+re = "Visitssa W3Schools!";
+str = "W3Schools"
+
+re = "Visi W3Schools!";
+str = /w3schools/i;
+
+re ="re, green, red, green, gren, gr, blue, yellow";
+
+console.log(re.search(str));
+console.log(re.replace(/w3schools/i, "Barik School"));
+console.log(re.match(/\d/g));
+console.log(re.match(/(red | green)/g));
+
+// Costal Code
+re = /^[0-9]{4}$/
+str = "5500";
+
+
+// Phone number
+//017386014909  +8801738601909 8801738601909
+re = /^(\+)?(88)?01[0-9]{9}$/;
+str = "01738601909"
+
+
+// Email
+re = /^([a-zA-Z0-9]\.?)+[^\.]@([a-zA-Z0-9]\.?)+[^\.]$/;
+str ="barik.34@gmail.com.bd"
+
+
+
+console.log(re.exec(str));
+console.log(re.test(str));
+
+reTest(re, str);
+function reTest(re, str){
+  if (re.test(str)) {
+    console.log(`'${str}' Matches '${re.source}'`);
+  } else {
+    console.log(`'${str}'  Doesn't Matches '${re.source}'`);
   }
 }
-
-// nodeName Property
-let val = document.getElementById("animation").nodeName;
-let val1 = document.getElementById("animation").nodeType;
-console.log(val1);
-
-
-// Creating New HTML Elements (Nodes)
-const para1 = document.createElement("p");
-const para2 = document.createElement("p");
-const node1 = document.createTextNode("This is new.");
-const node2 = document.createTextNode("Second Paragraph text");
-
-para1.appendChild(node1);
-para2.appendChild(node2);
-
-
-const element = document.getElementById("div1");
-element.appendChild(para1);
-element.appendChild(para2);
-
-// Replacing HTML Elements 
-const para3 = document.getElementById("p1")
-const node3 = document.createTextNode("This is new replace.");
-para3.replaceWith(para3, node3);
-
-
-// HTML DOM Node List
-const myNodelist = document.querySelectorAll("p");
-console.log(myNodelist);
