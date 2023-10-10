@@ -1,24 +1,63 @@
-// JavaScript JSON
-
-let text = '{ "employees" : [' +
-'{ "firstName":"John" , "lastName":"Doe" },' +
-'{ "firstName":"Anna" , "lastName":"Smith" },' +
-'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-
-let obj = JSON.parse(text);
-
-console.log(obj);
+// AJAX
 
 
-let text1 = {
-  name: "abdul Barik",
-  age : 26,
-  city :"dhaka"
+let xhttp = new XMLHttpRequest();
+console.log(xhttp );
+
+xhttp.onload = function() {
+  console.log(this.responseText);
 }
 
-console.log(text1);
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
 
-let text_json = JSON.stringify(text1);
-console.log(text_json);
-let text_obj = JSON.parse(text_json);
-console.log(text_obj);
+
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML =
+    this.responseText;
+
+    console.log(this.responseText);
+  }
+  xhttp.open("GET", "ajax_info.txt",true);
+  xhttp.send();
+}
+
+
+
+
+
+
+
+document.getElementById("get_data").addEventListener("click", loadJokes)
+
+function loadJokes() {
+  const xhttp = new XMLHttpRequest();
+
+  xhttp.onprogress = function() {
+    document.getElementById('output').innerHTML = "<h3> Loading.......</h3>"
+  }
+
+  xhttp.onload= function() {
+    if (this.status == 200) {
+      let data = JSON.parse(this.responseText);
+      let jokes= data.value
+      console.log(data);
+      // console.log(jokes);
+
+       let output = "<ol>";
+      data.forEach(function(item) {
+        console.log(item);
+        output += `<li>${item}</li>`
+      });
+       output += "</ol>";
+
+       document.getElementById('output').innerHTML = output;
+    }
+  };
+  // xhttp.open("GET", "https://api.icndb.com/jokes",true);
+  // xhttp.open("GET", "https://api.chucknorris.io/jokes/random/",true);
+  xhttp.open("GET", "https://api.chucknorris.io/jokes/categories",true);
+  xhttp.send();
+}
