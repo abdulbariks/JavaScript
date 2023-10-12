@@ -1,91 +1,27 @@
-// JavaScript Callbacks
-// Function Sequence
-function myDisplayer(some) {
-  console.log(some);
-}
-
-function myFirst() {
-  myDisplayer("Hello");
-}
-
-function mySecond() {
-  myDisplayer("Goodbye");
-}
-
-setTimeout(function myFirst() {
-  myDisplayer("Hello");
-},9000);
-
-setTimeout(function mySecond() {
-  myDisplayer("Goodbye");
-}, 7000);
+// Fetch API
 
 
-myFirst();
-mySecond();
+let file = "ajax_info.txt";
 
 
-// Callback Functions
-function myResult(something) {
-  console.log(something);
-}
-
-
-function mySum(num1, num2, myCallback) {
-  let sum = num1+num2;
-  myCallback(sum)
-}
-
-mySum(5,4,myResult);
+fetch(file)
+.then(x => x.text())
+.then(y => console.log(y))
 
 
 
-// setInterval(myFunction, 1000);
-// function myFunction() {
-//   let d = new Date();
-//   document.getElementById("demo").innerHTML=
-//   d.getHours() + ":" +
-//   d.getMinutes() + ":" +
-//   d.getSeconds();
+// async function getText(file) {
+//   let x = await fetch(file);
+//   let y = await x.text();
+//   console.log(y);
 // }
 
-// JavaScript Functions
-setTimeout(function() { 
-  myFunction("I love JavaScript !!!"); 
-}, 3000);
+getText("ajax_info.txt")
 
-function myFunction(value) {
-  console.log(value);
+
+
+async function getText(file) {
+  let myObject = await fetch(file);
+  let myText = await myObject.text();
+   console.log(myText);
 }
-
-// JavaScript Promise
-
-function mypromiseresult(value){
-  console.log(value);
-}
-const myPromise = new Promise(function(myResolve, myReject) {
-  let x = 5;
-  if (x == 0) {
-    myResolve("OK");
-  } else {
-    myReject("Error");
-  }
-});
-
-
-// myPromise.then(
-//   function(value) {
-//   console.log(value);
-// },
-// function(err) {
-//   console.log(err);
-// }
-
-myPromise.then(
-  function(value) {
-  mypromiseresult(value)
-},
-function(err) {
-  mypromiseresult(err)
-}
-);
