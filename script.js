@@ -1,35 +1,29 @@
-// Arrow Function
+// Spread Operator
 
-hello = function() {
-  return "Abdul Barik";
+let num1 = [1, 2, 3, 4, 5, 6, 9]
+let num2 = [5, 6, 7, 8]
+
+console.log(...num1, ...num2);
+
+let [one, two, ...spread] = num1;
+
+console.log(one, two, ...spread);
+
+
+
+let person1 = {
+    name: "abdul ",
+    age: 26,
+    city: "Rangpur"
 }
 
-console.log(hello());
-
-
-hello = ()=>{
-  return "Abdul Barik"
+let person2 = {
+    name: "Barik ",
+    age: 26,
+    city: "Dhaka"
 }
 
-console.log(hello());
+console.log(person1, person2);
 
-
-
-hello = () => "Abdul Barik"
-console.log(hello());
-
-
-hello = (val) => "Hello " + val;
-console.log(hello("Barik"));
-
-
-
-let person = () =>{
-  let name = "Abdul Barik";
-  let age = 26;
-
-  // Template Literals use back-ticks (``) 
-  console.log(`Name is ${name} & Age ${age}`);
-}
-
-person()
+let person = {...person1, ...person2}
+console.log(person); 
