@@ -1,77 +1,94 @@
-// JavaScript Async & Await
+// JavaScript Iterables
 
-
-function myDisplayer(some) {
-  console.log(some);
-}
-
-
-async function myFunction1(){
-  return "Abdul Barik";
-}
-
-
-async function myFunction2(){
-  return "Age 26";
-}
-
-
-// console.log(myFunction());
-
-// setInterval(() => {
-//   myFunction1().then(
-//     function(value) {myDisplayer(value);},
-//     function(error) {myDisplayer(error);}
-//   );
-// }, 5000);
-
-myFunction1().then(
-  function(value) {myDisplayer(value);},
-  function(error) {myDisplayer(error);}
-);
-
-
-myFunction2().then(
-  function(value) {myDisplayer(value);},
-  function(error) {myDisplayer(error);}
-);
-
-console.log();
-
-
-async function getFile() {
-  let myPromise = new Promise(function(resolve) {
-    let req = new XMLHttpRequest();
-    req.open('GET', "ajax_info.txt");
-    req.onload = function() {
-      if (req.status == 200) {
-        resolve(req.response);
-      } else {
-        resolve("File not Found");
-      }
-    };
-    req.send();
-  });
-  let mypromise = await myPromise;
-  console.log(mypromise);
-}
-
-getFile();
-
-
-
-async function myDisplay() {
-  let myPromise = new Promise(function(resolve, reject) {
-    let num = 10 ;
-    if (num >= 0) {
-      resolve("It's Positive Number")
-    } else {
-      reject("It's Negative Number");
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
     }
-  });
-  let result = await myPromise;
-
-  console.log(result);
+  };
 }
 
-myDisplay();
+// Create Iterable
+const n = myNumbers();
+n.next(); // 10
+n.next(); // 20
+n.next(); // 30
+
+console.log(n.next().value);
+
+
+// JavaScript Sets
+
+const letters = new Set(["a","b","c"]);
+
+// Add Values
+letters.add("d");
+letters.add("e");
+
+
+// List all entries
+
+letters.forEach(function(value){
+  console.log(value);
+})
+
+console.log(letters);
+console.log(letters.values());
+
+let myIterator = letters.values();
+
+for (const iterator of myIterator) {
+   console.log(iterator);
+}
+
+
+console.log(letters.keys());
+console.log(letters.entries());
+// console.log(letters.clear());
+console.log(letters.delete("c"));
+console.log(letters);
+
+
+
+// JavaScript Maps
+
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+
+console.log(fruits);
+
+fruits.forEach(function(value, key) {
+  console.log(value, key);
+})
+
+for (const x of fruits.values()) {
+  console.log("Values:", x);
+}
+
+for (const x of fruits.entries()) {
+  console.log("entries:", x);
+}
+for (const x of fruits.keys()) {
+  console.log("keys:", x);
+}
+fruits.set("manggo", 500)
+console.log(fruits);
+
+console.log(fruits.has("apples"));
+console.log(fruits);
+
+console.log(fruits.get("bananas"));
+console.log(fruits.size);
+console.log(fruits.delete("apples"));
+console.log(fruits);
+
+console.log(fruits.clear());
+console.log(fruits);
+
