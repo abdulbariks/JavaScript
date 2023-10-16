@@ -1,29 +1,77 @@
-// Spread Operator
-
-let num1 = [1, 2, 3, 4, 5, 6, 9]
-let num2 = [5, 6, 7, 8]
-
-console.log(...num1, ...num2);
-
-let [one, two, ...spread] = num1;
-
-console.log(one, two, ...spread);
+// JavaScript Async & Await
 
 
-
-let person1 = {
-    name: "abdul ",
-    age: 26,
-    city: "Rangpur"
+function myDisplayer(some) {
+  console.log(some);
 }
 
-let person2 = {
-    name: "Barik ",
-    age: 26,
-    city: "Dhaka"
+
+async function myFunction1(){
+  return "Abdul Barik";
 }
 
-console.log(person1, person2);
 
-let person = {...person1, ...person2}
-console.log(person); 
+async function myFunction2(){
+  return "Age 26";
+}
+
+
+// console.log(myFunction());
+
+// setInterval(() => {
+//   myFunction1().then(
+//     function(value) {myDisplayer(value);},
+//     function(error) {myDisplayer(error);}
+//   );
+// }, 5000);
+
+myFunction1().then(
+  function(value) {myDisplayer(value);},
+  function(error) {myDisplayer(error);}
+);
+
+
+myFunction2().then(
+  function(value) {myDisplayer(value);},
+  function(error) {myDisplayer(error);}
+);
+
+console.log();
+
+
+async function getFile() {
+  let myPromise = new Promise(function(resolve) {
+    let req = new XMLHttpRequest();
+    req.open('GET', "ajax_info.txt");
+    req.onload = function() {
+      if (req.status == 200) {
+        resolve(req.response);
+      } else {
+        resolve("File not Found");
+      }
+    };
+    req.send();
+  });
+  let mypromise = await myPromise;
+  console.log(mypromise);
+}
+
+getFile();
+
+
+
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve, reject) {
+    let num = 10 ;
+    if (num >= 0) {
+      resolve("It's Positive Number")
+    } else {
+      reject("It's Negative Number");
+    }
+  });
+  let result = await myPromise;
+
+  console.log(result);
+}
+
+myDisplay();
